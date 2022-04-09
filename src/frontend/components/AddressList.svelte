@@ -9,8 +9,8 @@
 
     $: addressList = $addressStore[$currentNetwork];
 
-    $: filteredAddressList = search ? addressList.filter(({bechAddress, balance}: Address) => {
-            return bechAddress.includes(search) || balance.toString().includes(search);
+    $: filteredAddressList = search ? addressList.filter(({address, balance}: Address) => {
+            return address.includes(search) || balance.toString().includes(search);
         })
         : addressList;
 

@@ -20,7 +20,7 @@ The task should test your Javascript and Typescript experience, ability to pick 
 
 ### Solution
 
-Clone the repo and install the dependencies and run...
+Clone the repo and install the dependencies...
 ```bash
 cd iota-monitor
 npm i

@@ -29,12 +29,14 @@ export const addressStore = {
             return self;
         });
     },
+
     removeAddress: (network: Networks, addressToRemove: string) =>
         update((self) => {
             self[network] = self[network].filter(({ address }) => addressToRemove !== address);
             window.api.send('unsubscribe', [network, addressToRemove]);
             return self;
         }),
+
     refreshBalance: async (network: Networks, addressToRefresh: string) => {
         const refreshedAddressBalancePromise: Promise<number> = fetchAddressBalance(network, addressToRefresh);
         update((self) => {

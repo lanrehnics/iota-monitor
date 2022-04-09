@@ -1,30 +1,22 @@
 <script lang="ts">
     import {currentUnit} from '../stores/store';
     import {unitFormatter} from '../utils/helper';
-    import type {Units} from '@iota/iota.js';
     import Fa from 'svelte-fa/src/fa.svelte'
-    import {faRemove} from '@fortawesome/free-solid-svg-icons'
+    import {faRemove, faStroopwafel} from '@fortawesome/free-solid-svg-icons'
     import {deleteAddress} from '../stores/eventsStore';
 
     export let address;
     export let balance: number | Promise<number>;
 
-    function cycleUnits() {
-        const units: Units[] = ['i', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi'];
-        const index = units.findIndex((unit) => unit === $currentUnit);
-        $currentUnit = units[(index + 1) % units.length];
-    }
-
     function handleDeleteAddress() {
-        console.log(address);
-        deleteAddress.update(address => address);
+        deleteAddress.update(add => address);
     }
 </script>
 
 <li>
     {#await balance}
         <p>{address}</p>
-        <span>...fetching balance</span>
+        <Fa icon={faStroopwafel} size="lg" spin />
     {:then balanceValue}
         <p>{address}</p>
         <span>

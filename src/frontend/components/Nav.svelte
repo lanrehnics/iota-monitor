@@ -40,7 +40,7 @@
                 <select bind:value={selectedNetwork} on:change="{() => $currentNetwork = selectedNetwork}"
                         class="form-select form-select-md" aria-label=".form-select-sm">
                     <option value={Networks.Mainnet}>Mainnet</option>
-                    <option value={Networks.Mainnet}>Devnet</option>
+                    <option value={Networks.Devnet}>Devnet</option>
                 </select>
 
             </div>
