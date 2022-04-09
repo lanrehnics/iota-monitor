@@ -1,0 +1,9 @@
+/.vscode/
+/.idea/
+
+/out/
+/node_modules/
+/dist/www/build/
+
+.DS_Store
+electron-builder.env

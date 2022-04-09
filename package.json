@@ -1,0 +1,110 @@
+{
+  "name": "iota-monitor",
+  "productName": "IOTA-MONITOR",
+  "description": "Task solution to develop an application to monitor IOTA addresses for their latest balances, written in Svelte and Typescript",
+  "author": "Olanrewaju Okewande <lanrehnics@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.1",
+  "main": "dist/www/build/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "nodemon": "nodemon --debug",
+    "dev": "rollup -c -w",
+    "start": "npm run compile && electron .",
+    "compile": "tsc",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "out": "npm run out:win && npm run out:mac && npm run out:linux",
+    "out:win": "rollup -c && tsc && electron-builder build --win --publish never",
+    "out:mac": "rollup -c && tsc && electron-builder build --mac --publish never",
+    "out:linux": "rollup -c && tsc && electron-builder build --linux --publish never",
+    "publish": "rollup -c && tsc && electron-builder build -mwl --publish always",
+    "publish:win": "rollup -c && tsc && electron-builder build --win --publish always",
+    "publish:mac": "rollup -c && tsc && electron-builder build --mac --publish always",
+    "publish:linux": "rollup -c && tsc && electron-builder build --linux --publish always"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@tsconfig/svelte": "^2.0.0",
+    "electron": "^18.0.3",
+    "electron-builder": "^22.14.13",
+    "nodemon": "^2.0.15",
+    "rollup": "^2.58.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.0.0",
+    "svelte-check": "^2.0.0",
+    "svelte-fa": "^2.4.0",
+    "svelte-preprocess": "^4.0.0",
+    "tslib": "^2.0.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@iota/iota.js": "^1.8.1",
+    "@iota/mqtt.js": "^1.8.2",
+    "bootstrap": "^5.1.3",
+    "electron-reload": "^2.0.0-alpha.1",
+    "sirv-cli": "^1.0.0"
+  },
+  "build": {
+    "productName": "IOTA-Monitor",
+    "appId": "iota-monitor",
+    "directories": {
+      "buildResources": "./src/frontend",
+      "output": "./dist"
+    },
+    "files": [
+      "dist/www",
+      "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "lanrehnics",
+        "repo": "iota-monitor"
+      }
+    ],
+    "mac": {
+      "icon": "./dist/www/assets/icon.ico",
+      "category": "public.app-category.finance",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "entitlements": "./dist/www/assets/entitlements.mac.plist",
+      "entitlementsInherit": ".public/assets/entitlements.mac.plist"
+    },
+    "linux": {
+      "icon": "./dist/www/assets/iota.png",
+      "target": [
+        "AppImage"
+      ],
+      "desktop": {
+        "Name": "IOTA Monitor",
+        "Comment": "Monitor Bech32 IOTA addresses",
+        "Categories": "Office;Network;Finance"
+      }
+    },
+    "win": {
+      "icon": "./dist/www/assets/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "installerIcon": "./dist/www/assets/icon.ico",
+      "uninstallerIcon": "./dist/www/assets/icon.ico",
+      "uninstallDisplayName": "IOTA Monitor",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}
