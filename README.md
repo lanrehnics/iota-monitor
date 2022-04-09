@@ -20,8 +20,9 @@ The task should test your Javascript and Typescript experience, ability to pick 
 
 ### Solution
 
-Clone the repo and install the dependencies...
+Clone the repo , install dependencies and run.
 ```bash
+git clone https://github.com/lanrehnics/iota-monitor.git
 cd iota-monitor
 npm i
 npm run build
