@@ -26,7 +26,7 @@
             spellcheck="false"
             class="form-control me-2" type="text"
             maxlength="64"
-            placeholder="Enter address to monitor"
+            placeholder="Enter a valid iota address to monitor"
             bind:value={address}
     />
     <button class="btn btn-primary" type="submit" disabled={!isAddressValid(address, $currentNetwork)} style='margin-right:10px'>
